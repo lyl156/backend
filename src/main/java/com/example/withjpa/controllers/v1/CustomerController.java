@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/api/v1/customers")
+@RequestMapping(BaseUrl.Customer_BASE_URL)
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -34,7 +34,7 @@ public class CustomerController {
 
     }
 
-    @GetMapping({ "/{id}" })
+    @GetMapping("/{id}")
     public ResponseEntity<CustomerDTO> getCustomerById(@PathVariable Long id) {
         return new ResponseEntity<CustomerDTO>(customerService.getCustomerById(id), HttpStatus.OK);
     }
@@ -44,17 +44,17 @@ public class CustomerController {
         return new ResponseEntity<CustomerDTO>(customerService.createNewCustomer(customerDTO), HttpStatus.CREATED);
     }
 
-    @PutMapping({ "/{id}" })
+    @PutMapping("/{id}")
     public ResponseEntity<CustomerDTO> updateCustomer(@PathVariable Long id, @RequestBody CustomerDTO customerDTO) {
         return new ResponseEntity<CustomerDTO>(customerService.saveCustomerByDTO(id, customerDTO), HttpStatus.OK);
     }
 
-    @PatchMapping({ "/{id}" })
+    @PatchMapping("/{id}")
     public ResponseEntity<CustomerDTO> patchCustomer(@PathVariable Long id, @RequestBody CustomerDTO customerDTO) {
         return new ResponseEntity<CustomerDTO>(customerService.patchCustomer(id, customerDTO), HttpStatus.OK);
     }
 
-    @DeleteMapping({ "/{id}" })
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCustomer(@PathVariable Long id) {
 
         customerService.deleteCustomerById(id);

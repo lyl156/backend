@@ -1,5 +1,6 @@
 package com.example.withjpa.controllers.v1;
 
-public class BaseUrl {
-    public static final String BASE_URL = "/api/v1/categories";
+public interface BaseUrl {
+    public static final String Cateogry_BASE_URL = "/api/v1/categories";
+    public static final String Customer_BASE_URL = "/api/v1/customers";
 }
