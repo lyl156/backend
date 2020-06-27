@@ -13,6 +13,7 @@ public class CustomerDTO {
     private String firstname;
     private String lastname;
 
+    // when serilize output to JSON
     @JsonProperty("customer_url")
     private String customerUrl;
 }

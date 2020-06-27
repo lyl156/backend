@@ -16,6 +16,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<org.mapstruct.version>1.3.1.Final</org.mapstruct.version>
+		<org.projectlombok.version>1.18.12</org.projectlombok.version>
 	</properties>
 
 	<dependencies>
@@ -63,37 +64,37 @@
 	</dependencies>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5.1</version> <!-- or newer version -->
-				<configuration>
-					<source>1.8</source> <!-- depending on your project -->
-					<target>1.8</target> <!-- depending on your project -->
-					<annotationProcessorPaths>
-						<path>
-							<groupId>org.mapstruct</groupId>
-							<artifactId>mapstruct-processor</artifactId>
-							<version>${org.mapstruct.version}</version>
-						</path>
-						<!-- other annotation processors -->
-						<!-- solution:https://stackoverflow.com/questions/47109827/mapstruct-mapper-annotation-dont-create-bean -->
-						<!-- solution:https://mapstruct.org/documentation/stable/reference/html/ -->
-						<!-- tell the compiler that generate bean to this mapper -->
-					</annotationProcessorPaths>
-					<compilerArgs>
-						<compilerArg>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.8.1</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+						<annotationProcessorPaths>
+							<!-- first lombok then mapstruct -->
+							<path>
+								<groupId>org.mapstruct</groupId>
+								<artifactId>mapstruct-processor</artifactId>
+								<version>${org.mapstruct.version}</version>
+							</path>
+							<path>
+								<groupId>org.projectlombok</groupId>
+								<artifactId>lombok</artifactId>
+								<version>${org.projectlombok.version}</version>
+							</path>
+						</annotationProcessorPaths>
+						<compilerArgs>
+							<compilerArg>
 							   -Amapstruct.defaultComponentModel=spring
 						</compilerArg>
-					</compilerArgs>
-				</configuration>
-			</plugin>
-		</plugins>
+						</compilerArgs>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 
 </project>
