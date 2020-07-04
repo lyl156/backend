@@ -1,5 +1,7 @@
 package com.example.withjpa.controllers.v1;
 
+import javax.validation.Valid;
+
 import com.example.withjpa.api.v1.model.CustomerDTO;
 import com.example.withjpa.api.v1.model.CustomerListDTO;
 import com.example.withjpa.services.CustomerService;
@@ -40,19 +42,19 @@ public class CustomerController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CustomerDTO createNewCustomer(@RequestBody CustomerDTO customerDTO) {
+    public CustomerDTO createNewCustomer(@Valid @RequestBody CustomerDTO customerDTO) {
         return customerService.createNewCustomer(customerDTO);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public CustomerDTO updateCustomer(@PathVariable Long id, @RequestBody CustomerDTO customerDTO) {
+    public CustomerDTO updateCustomer(@Valid @PathVariable Long id, @RequestBody CustomerDTO customerDTO) {
         return customerService.saveCustomerByDTO(id, customerDTO);
     }
 
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public CustomerDTO patchCustomer(@PathVariable Long id, @RequestBody CustomerDTO customerDTO) {
+    public CustomerDTO patchCustomer(@Valid @PathVariable Long id, @RequestBody CustomerDTO customerDTO) {
         return customerService.patchCustomer(id, customerDTO);
     }
 

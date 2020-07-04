@@ -60,6 +60,12 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
+		<!-- http://hibernate.org/validator/documentation/getting-started/ -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.1.5.Final</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
