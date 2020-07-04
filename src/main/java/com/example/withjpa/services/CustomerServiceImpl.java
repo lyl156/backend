@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import com.example.withjpa.api.v1.mapper.CustomerMapper;
 import com.example.withjpa.api.v1.model.CustomerDTO;
 import com.example.withjpa.domain.Customer;
+import com.example.withjpa.exceptions.NotFoundException;
 import com.example.withjpa.repositories.CustomerRepository;
 
 import org.springframework.stereotype.Service;
@@ -32,12 +33,11 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO getCustomerById(Long id) {
-
         return customerRepository.findById(id).map(customerMapper::customerToCustomerDTO).map(customerDTO -> {
             // set API URL
             customerDTO.setCustomerUrl("/api/v1/customer/" + id);
             return customerDTO;
-        }).orElseThrow(RuntimeException::new); // todo exception handling 390
+        }).orElseThrow(NotFoundException::new); // todo exception handling 390, not message available
     }
 
     @Override

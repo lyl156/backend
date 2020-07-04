@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import com.example.withjpa.api.v1.mapper.CategoryMapper;
 import com.example.withjpa.api.v1.model.CategoryDTO;
+import com.example.withjpa.exceptions.NotFoundException;
 import com.example.withjpa.repositories.CategoryRepository;
 
 import org.springframework.stereotype.Service;
@@ -29,6 +30,10 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryDTO getCategoryByName(String name) {
-        return categoryMapper.categoryToCategoryDTO(categoryRepository.findByName(name));
+        CategoryDTO categoryDTO = categoryMapper.categoryToCategoryDTO(categoryRepository.findByName(name));
+        if (categoryDTO == null) {
+            throw new NotFoundException("given resource not found");
+        }
+        return categoryDTO;
     }
 }
