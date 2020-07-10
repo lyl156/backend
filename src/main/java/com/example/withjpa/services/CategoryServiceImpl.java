@@ -23,7 +23,10 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<CategoryDTO> getAllCategories() {
+        // return categoryMapper.categoryToCategoryDTO(categoryRepository.findAll());
+        // Argument : Category
 
+        // staff.stream().map(x -> x.getName()).collect(Collectors.toList());
         return categoryRepository.findAll().stream().map(categoryMapper::categoryToCategoryDTO)
                 .collect(Collectors.toList());
     }

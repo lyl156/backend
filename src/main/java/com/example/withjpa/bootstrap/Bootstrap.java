@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Bootstrap implements CommandLineRunner {
 
-    private CategoryRepository categoryRespository;
+    private final CategoryRepository categoryRespository;
     private final CustomerRepository customerRepository;
 
     public Bootstrap(CategoryRepository categoryRespository, CustomerRepository customerRepository) {
@@ -53,7 +53,7 @@ public class Bootstrap implements CommandLineRunner {
 
     private void loadCustomers() {
         Customer customer1 = new Customer();
-        customer1.setId(1l);
+        customer1.setId(1l); // not needed
         customer1.setFirstname("Michale");
         customer1.setLastname("Weston");
         customerRepository.save(customer1);
