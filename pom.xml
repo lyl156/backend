@@ -52,10 +52,10 @@
 		</dependency>
 		<!-- https://docs.spring.io/spring-boot/docs/2.0.0.M3/reference/html/howto-spring-mvc.html -->
 		<!-- 75.2 Write an XML REST service -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-xml</artifactId>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
