@@ -1,11 +1,9 @@
 # backend  
-add `this.categories = categories;` to fix `reason: actual and formal argument lists differ in length.`  
-`<compilerArg>
-							   -Amapstruct.defaultComponentModel=spring`  
-to make mapper spring bean  
+build RESTful api with Spring,Spring boot, Spring data JPA
   
-## todo  
-1.customerServiceImpl exception handling    
+## todo    
+0.add document by swagger   
+1.customerServiceImpl exception handling     
 2.change SQL password from configuration to environment variable  
 3.refactor initialization MySQL  
 4.security    
